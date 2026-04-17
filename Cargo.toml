@@ -9,8 +9,10 @@ categories = ["api-bindings"]
 
 [dependencies]
 # Provides liblua-eris.a (Lua 5.3.5 + eris.c) at link time. Referenced
-# from this crate so cargo doesn't drop the link directives.
-lua-eris-sys = { git = "ssh://git@github.com/SirHall/lua-eris-sys.git", branch = "main" }
+# from this crate so cargo doesn't drop the link directives. Pinned to
+# a specific commit for reproducible builds — bump when picking up new
+# lua-eris-sys work.
+lua-eris-sys = { git = "ssh://git@github.com/SirHall/lua-eris-sys.git", rev = "a7ec04a52532adc5edb7170f558c53b7b7f34915" }
 
 # mlua-sys with `external` so it doesn't try to build/probe its own
 # Lua — lua-eris-sys provides the symbols.
