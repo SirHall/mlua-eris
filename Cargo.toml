@@ -1,0 +1,22 @@
+[package]
+name = "mlua-eris"
+version = "0.1.0"
+edition = "2021"
+description = "Safe mlua wrapper for Eris persistence — serialize and restore mid-execution Lua coroutines (and any other Lua value) for save-game systems and similar use cases."
+license = "MIT"
+keywords = ["mlua", "lua", "eris", "persistence", "coroutine"]
+categories = ["api-bindings"]
+
+[dependencies]
+# Provides liblua-eris.a (Lua 5.3.5 + eris.c) at link time. Referenced
+# from this crate so cargo doesn't drop the link directives.
+lua-eris-sys = { git = "ssh://git@github.com/SirHall/lua-eris-sys.git", branch = "main" }
+
+# mlua-sys with `external` so it doesn't try to build/probe its own
+# Lua — lua-eris-sys provides the symbols.
+mlua-sys = { version = "0.10", features = ["lua53", "external"] }
+
+# Safe API. Its lua53 feature must match mlua-sys's.
+mlua = { version = "0.11", default-features = false, features = ["lua53"] }
+
+[dev-dependencies]
