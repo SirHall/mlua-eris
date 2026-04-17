@@ -18,7 +18,9 @@ lua-eris-sys = { git = "ssh://git@github.com/SirHall/lua-eris-sys.git", rev = "a
 # Lua — lua-eris-sys provides the symbols.
 mlua-sys = { version = "0.10", features = ["lua53", "external"] }
 
-# Safe API. Its lua53 feature must match mlua-sys's.
-mlua = { version = "0.11", default-features = false, features = ["lua53"] }
+# Safe API. Its lua53 feature must match mlua-sys's. `send` makes
+# the Lua handle `Send`, allowing callers to put it behind a Bevy
+# component + iterate with par_iter_mut / rayon.
+mlua = { version = "0.11", default-features = false, features = ["lua53", "send"] }
 
 [dev-dependencies]
