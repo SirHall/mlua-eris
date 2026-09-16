@@ -82,7 +82,7 @@ eris.register_perm("host.double", host_fn)?;
 - ✅ End-to-end spike with a real-world script (spaceship's `transponder.rhai` ported to Lua) passes
 - ⚠️ API may shift before 1.0
 - ⚠️ Documentation is sparse beyond the rustdoc
-- ⚠️ Only macOS/Linux tested (Windows would need a build.rs tweak in `lua-eris-sys`)
+- ✅ macOS, Linux, and Windows tested
 
 ## License
 
